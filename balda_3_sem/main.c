@@ -28,7 +28,6 @@
 #define  x_coord_menu           x_coord_field + 14
 #define  debug_buff				21
 #define	 debug_file				"course_work.txt"
-#define  test 					"dsadsa"
 
 /*Структура узла словарного и инвертированного префиксных деревьев*/
 typedef struct node {
