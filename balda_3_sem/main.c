@@ -437,12 +437,13 @@ void check_all_letters(int x, int y) {
 	int end_ind = 0;
 	for (int i = 0; i < ALPHABET_POW; i++) {
 		// COURSEWORK
-		if (difficult == EASY && max_len >= 3) {
-			break;
-		}
-		if (difficult == MEDIUM && max_len >= 4) {
-			break;
-		}
+		// var
+		//if (difficult == EASY && max_len >= 3) {
+			//break;
+		//}
+		//if (difficult == MEDIUM && max_len >= 4) {
+			//break;
+		//}
 		// COURSEWORK
 		int len = max_len;
 		field_letters[x][y] = curr_letter;

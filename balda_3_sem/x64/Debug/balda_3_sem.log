@@ -9,16 +9,16 @@ C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(266,32): warning
 C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(302,14): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(304,35): warning C4047: =: "unsigned char *" отличается по уровням косвенного обращения от "unsigned char"
 C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(362,35): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(495,51): warning C4047: =: "unsigned char" отличается по уровням косвенного обращения от "unsigned char *"
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(597,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(735,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(843,9): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1145,9): warning C4101: j: неиспользованная локальная переменная
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1145,6): warning C4101: i: неиспользованная локальная переменная
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1636,28): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1687,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1995,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(2125,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(496,51): warning C4047: =: "unsigned char" отличается по уровням косвенного обращения от "unsigned char *"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(598,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(736,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(844,9): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1146,9): warning C4101: j: неиспользованная локальная переменная
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1146,6): warning C4101: i: неиспользованная локальная переменная
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1637,28): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1688,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1996,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(2126,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
 C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(187): warning C4715: find_node: значение возвращается не при всех путях выполнения
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1142): warning C4715: check_end_game: значение возвращается не при всех путях выполнения
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1143): warning C4715: check_end_game: значение возвращается не при всех путях выполнения
   balda_3_sem.vcxproj -> C:\Users\puuni\source\repos\balda_3_sem_orig\x64\Debug\balda_3_sem.exe
