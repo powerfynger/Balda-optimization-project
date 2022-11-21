@@ -23,7 +23,7 @@
 #define  clr_bg_chosen			CON_CLR_GREEN
 #define  clr_bg_warning         CON_CLR_YELLOW
 #define  five_count             2236
-#define  x_coord_field          80
+#define  x_coord_field          50
 #define  y_coord_field          5
 #define  x_coord_menu           x_coord_field + 14
 #define  debug_buff				21
@@ -547,7 +547,7 @@ int main()
 	// system("mode con cols=100 lines=25");
 	show_cursor(0);
 	score.first_player = 0, score.second_player = 0;
-	debug_info.debug_on = 1;
+	debug_info.debug_on = 0;
 	// Запуск главного меню
 	main_menu();
 
@@ -884,12 +884,15 @@ void set_letter() {
 		}
 		if (turn % 2 == 0 && game_mode == VS_ROBOT) {
 			clock_t start_time = clock();
+			
 			bot_move();
-			debug_info.time_pass[turn_test] = (double)(clock() - start_time) / CLOCKS_PER_SEC;
-			debug_info.cells_left[turn_test] = 0;
-			for (i = 0; i < 5; i++) {
-				for (int j = 0; j < 5; j++) {
-					if (field_letters[i][j] == '\0') debug_info.cells_left[turn_test]++;
+			if (debug_info.debug_on == 1) {
+				debug_info.time_pass[turn_test] = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+				debug_info.cells_left[turn_test] = 0;
+				for (i = 0; i < 5; i++) {
+					for (int j = 0; j < 5; j++) {
+						if (field_letters[i][j] == '\0') debug_info.cells_left[turn_test]++;
+					}
 				}
 			}
 			memset(longest_word, 0, sizeof(longest_word));
@@ -953,7 +956,7 @@ void set_letter() {
 
 		// Данные подготовлены, вывести на экран
 		con_draw_release();
-		debug();
+		//debug();
 		while (!key_is_pressed()) // Если пользователь нажимает кнопку
 		{
 			if (turn % 2 == 0 && game_mode == VS_ROBOT) {
@@ -1129,7 +1132,7 @@ int check_end_game() {
 		}
 	}
 	if (count == 25) {
-		debug();
+		//debug();
 		if (debug_info.debug_on != 1) {
 			show_end_game(0);
 			end_game();
