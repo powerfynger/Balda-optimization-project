@@ -51,4 +51,7 @@
 ### Версия четвертая(финальная)
 Было добавлено больше локальных отсечений и оптимизаций сравнения. Компиляция проекта производилась с флагом приоритета скорости работы.
 
-![alt text](https://github.com/powerfynger/balda_3_sem_orig/blob/master/images/ver_4.png)
+![alt text](https://github.com/powerfynger/balda_3_sem_orig/blob/master/images/ver_4_ez.png)
+![alt text](https://github.com/powerfynger/balda_3_sem_orig/blob/master/images/ver_4_medium.png)
+![alt text](https://github.com/powerfynger/balda_3_sem_orig/blob/master/images/ver_4_hard.png)
+
