@@ -6,13 +6,11 @@
 #include <stdlib.h>
 #include <windows.h>
 
+#include "sqlite3.h"
 #include <time.h>
 
 
 #define	 LETTER_a_RUS			224
-#define  INV					"inv.txt"
-#define  DICT					"dict.txt"
-#define  START_WORDS			"start_words.txt"
 #define  SAVE_FILE				"save.txt"
 #define	 ALPHABET_POW			32
 #define  MAX_WORD_LEN			30
@@ -22,7 +20,7 @@
 #define  clr_font				CON_CLR_WHITE_LIGHT
 #define  clr_bg_chosen			CON_CLR_GREEN
 #define  clr_bg_warning         CON_CLR_YELLOW
-#define  five_count             2236
+#define  START_WORDS_COUNT             2236
 #define  x_coord_field          50
 #define  y_coord_field          5
 #define  x_coord_menu           x_coord_field + 14
@@ -55,8 +53,10 @@ int pass_turn_window();
 int surrender_window();
 
 /*Считывание файлов*/
-void read_dict_to_tree(NODE*);
-void read_inv_to_tree(NODE*);
+void open_db();
+void read_dict_to_tree(sqlite3*);
+void read_inv_to_tree(sqlite3*);
+void read_start_word(sqlite3*);
 /*Алгоритм поиска*/
 int bot_move();
 void check_all_letters(int, int);
@@ -128,6 +128,7 @@ unsigned char* longest_word[MAX_WORD_LEN] = { '\0' };
 unsigned char words_bank[MAX_WORDS_COUNT][MAX_WORD_LEN];
 unsigned char letter_chosen = 0;
 unsigned char field_letters[5][5] = { {'\0'} };
+char start_word[7] = {0};
 int btn_bg;
 int difficult = EASY; //сложность изначально "лёгкий"
 int max_len = 0;
@@ -226,37 +227,105 @@ void insert_word_tree(unsigned char* word, NODE* root) {
 	//}
 }
 
-/*Считывание словаря в словарное дерево*/
-void read_dict_to_tree(NODE* root) {
-	FILE* file;
-	char line[MAX_WORD_LEN + 2];
-	int len = 0;
-	if (fopen_s(&file, DICT, "r+")) {
-		printf("Словарь не найден...");
+void open_db() {
+	sqlite3* db;
+
+	if (sqlite3_open("data_ansi.db", &db))
+	{
+		sqlite3_close(db);
+		printf("Can't open database: %s\n", sqlite3_errmsg(db));
 		exit(EXIT_FAILURE);
 	}
-	while (fgets(line, sizeof(line), file) != NULL) {
-		len = strlen(line) - 1;
-		(line[len] == '\n') ? line[len] = '\0' : line[len];
-		insert_word_tree(line, root);
-	}
-	fclose(file);
+
+	read_dict_to_tree(db);
+
+	read_inv_to_tree(db);
+
+	read_start_word(db);
+
+	sqlite3_close(db);
+
 }
 
-void read_inv_to_tree(NODE* root) {
-	FILE* file;
-	char line[MAX_WORD_LEN + 2];
+/*Считывание словаря в словарное дерево*/
+void read_dict_to_tree(sqlite3* db) {
+	sqlite3_stmt* res;
+	const char* tail;
+	char* line[MAX_WORD_LEN] = { '\0' };
 	int len = 0;
-	if (fopen_s(&file, INV, "r+")) {
-		printf("Словарь не найден...");
+	if (sqlite3_prepare_v2(db, "select * from dict;", 128, &res, &tail) != SQLITE_OK)
+	{
+		sqlite3_close(db);
+		printf("Can't retrieve data: %s\n", sqlite3_errmsg(db));
 		exit(EXIT_FAILURE);
 	}
-	while (fgets(line, sizeof(line), file) != NULL) {
+
+	while (sqlite3_step(res) == SQLITE_ROW)
+	{
+		strcpy(line, sqlite3_column_text(res, 0));
 		len = strlen(line) - 1;
 		(line[len] == '\n') ? line[len] = '\0' : line[len];
-		insert_word_tree(line, root);
+		insert_word_tree(line, roots.dict);
 	}
-	fclose(file);
+	sqlite3_finalize(res);
+
+}
+
+void read_inv_to_tree(sqlite3* db) {
+
+	sqlite3_stmt* res;
+	const char* tail;
+	char* line[MAX_WORD_LEN] = { '\0' };
+	int len = 0;
+	if (sqlite3_prepare_v2(db, "select * from inv;", 128, &res, &tail) != SQLITE_OK)
+	{
+		sqlite3_close(db);
+		printf("Can't retrieve data: %s\n", sqlite3_errmsg(db));
+		exit(EXIT_FAILURE);
+	}
+
+	while (sqlite3_step(res) == SQLITE_ROW)
+	{
+		strcpy(line, sqlite3_column_text(res, 0));
+		len = strlen(line) - 1;
+		(line[len] == '\n') ? line[len] = '\0' : line[len];
+		insert_word_tree(line, roots.inv);
+	}
+	sqlite3_finalize(res);
+
+}
+
+void read_start_word(sqlite3* db) {
+	sqlite3_stmt* res;
+	const char* tail;
+	char* line[MAX_WORD_LEN] = { '\0' };
+	int i = 0;
+	int len = 0;
+
+	if (sqlite3_prepare_v2(db, "select * from start_words;", 128, &res, &tail) != SQLITE_OK)
+	{
+		sqlite3_close(db);
+		printf("Can't retrieve data: %s\n", sqlite3_errmsg(db));
+		exit(EXIT_FAILURE);
+	}
+
+	srand(time(NULL));
+	int r = rand() % START_WORDS_COUNT;
+	
+
+	while (sqlite3_step(res) == SQLITE_ROW)
+	{
+		if (i == r) {
+			strcpy(start_word, sqlite3_column_text(res, 0));
+			break;
+		}
+			i++;
+	}
+
+	len = strlen(start_word) - 1;
+	(start_word[len] == '\n') ? start_word[len] = '\0' : start_word[len];
+
+	sqlite3_finalize(res);
 }
 
 int find_word_tree(unsigned char* word, NODE* root) {
@@ -528,21 +597,15 @@ int main()
 	FILE* file;
 	init_dict_tree();
 	init_inv_tree();
-	read_dict_to_tree(roots.dict);
-	read_inv_to_tree(roots.inv);
-	//read_dict_to_tree()
-	/*file = fopen(DICT, "r");
-	if (file == NULL) {
-		printf("I just don't have the words to describe the pain i feel!");
-		return 1;
-	}
-	fclose(file);*/
-	file = fopen(START_WORDS, "r");
-	if (file == NULL) {
-		printf("I just don't have the words with five letters to describe the pain i feel!");
-		return 1;
-	}
-	fclose(file);
+	
+	open_db();
+
+	//file = fopen(START_WORDS, "r");
+	//if (file == NULL) {
+	//	printf("I just don't have the words with five letters to describe the pain i feel!");
+	//	return 1;
+	//}
+	//fclose(file);
 	// Инициализируется консоль, скрывается курсор, добавляется русский язык в консоль
 	con_init(100, 50);
 	// system("mode con cols=100 lines=25");
@@ -837,24 +900,20 @@ void set_letter() {
 		}
 		if (start_turn == 1)turn = 1;
 		else turn = 0;
-		//Случайнок слово в начале
-		FILE* five_file;
-		char five_word[7];
-		five_file = fopen(START_WORDS, "r");
-		srand(time(NULL));
-		int r = rand() % five_count;
-		system("cls");
-		for (i = 1; i != r; i++) fgets(five_word, 7, five_file);
-		field_letters[2][0] = five_word[0];
-		field_letters[2][1] = five_word[1];
-		field_letters[2][2] = five_word[2];
-		field_letters[2][3] = five_word[3];
-		field_letters[2][4] = five_word[4];
-		words_bank[0][0] = five_word[0];
-		words_bank[0][1] = five_word[1];
-		words_bank[0][2] = five_word[2];
-		words_bank[0][3] = five_word[3];
-		words_bank[0][4] = five_word[4];
+		//Случайноe слово в начале
+		// ADD DB
+		//strcpy()
+		//system("cls");
+		field_letters[2][0] = start_word[0];
+		field_letters[2][1] = start_word[1];
+		field_letters[2][2] = start_word[2];
+		field_letters[2][3] = start_word[3];
+		field_letters[2][4] = start_word[4];
+		words_bank[0][0] = start_word[0];
+		words_bank[0][1] = start_word[1];
+		words_bank[0][2] = start_word[2];
+		words_bank[0][3] = start_word[3];
+		words_bank[0][4] = start_word[4];
 		words_bank[0][5] = '\0';
 		words_bank_len = 1;
 		/*field_letters[2][0] = 'ж';
@@ -869,7 +928,6 @@ void set_letter() {
 		words_bank[0][4] = 'к';
 		words_bank[0][5] = '\0';
 		words_bank_len = 1;*/
-		fclose(five_file);
 	}
 	int column_active_idx = 0;
 	int line_active_idx = 0;
@@ -1449,12 +1507,30 @@ int set_word(int column_active_idx, int line_active_idx) {
 					else
 					{
 						//Проверка на наличие слова в словаре
-						FILE* file = fopen(DICT, "r+");
+						sqlite3* db;
+						sqlite3_stmt* res;
+						const char* tail;
+						if (sqlite3_open("data_ansi.db", &db))
+						{
+							sqlite3_close(db);
+							printf("Can't open database: %s\n", sqlite3_errmsg(db));
+							exit(EXIT_FAILURE);
+						}
+
+						if (sqlite3_prepare_v2(db, "select * from dict;", 128, &res, &tail) != SQLITE_OK)
+						{
+							sqlite3_close(db);
+							printf("Can't retrieve data: %s\n", sqlite3_errmsg(db));
+							exit(EXIT_FAILURE);
+						}
 						unsigned char str[MAX_WORD_LEN];
 						int flag_compare = 0;
-						while (!feof(file))
+
+						while (sqlite3_step(res) == SQLITE_ROW)
 						{
-							fgets(str, 30, file);
+							strcpy(str, sqlite3_column_text(res, 0));
+							int len = strlen(str);
+							str[len] = '\n';
 							int compare_idx = 0;
 							while (compare_idx < word_length) {
 								if (field_letters[field_word[compare_idx][0]][field_word[compare_idx][1]] == str[compare_idx]) compare_idx++;
@@ -1489,6 +1565,8 @@ int set_word(int column_active_idx, int line_active_idx) {
 								}
 							}
 						}
+						sqlite3_finalize(res);
+						sqlite3_close(db);
 						word_length = 0;
 						for (n = 0; n < word_length; n++) {
 							field_word[n][0] = '\0';

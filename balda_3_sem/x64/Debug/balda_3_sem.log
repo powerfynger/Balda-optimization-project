@@ -1,24 +1,41 @@
 ﻿  main.c
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(180,31): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(192,31): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(207,52): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(214,14): warning C4098: insert_word_tree: функция типа "void", возвращающая значение
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(239,22): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(255,22): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(266,32): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(302,14): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(304,35): warning C4047: =: "unsigned char *" отличается по уровням косвенного обращения от "unsigned char"
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(362,35): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(496,51): warning C4047: =: "unsigned char" отличается по уровням косвенного обращения от "unsigned char *"
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(598,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(736,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(844,9): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1146,9): warning C4101: j: неиспользованная локальная переменная
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1146,6): warning C4101: i: неиспользованная локальная переменная
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1637,28): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1688,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1996,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(2126,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(187): warning C4715: find_node: значение возвращается не при всех путях выполнения
-C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1143): warning C4715: check_end_game: значение возвращается не при всех путях выполнения
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(181,31): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(193,31): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(208,52): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(215,14): warning C4098: insert_word_tree: функция типа "void", возвращающая значение
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(265,14): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "char *[30]"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(265,10): warning C4024: strcpy: различные типы для формального и фактического параметров 1
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(266,20): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[30]"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(266,16): warning C4024: strlen: различные типы для формального и фактического параметров 1
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(266,22): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(267,21): warning C4047: ==: "char *" отличается по уровням косвенного обращения от "int"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(268,24): warning C4047: функция: "unsigned char *" отличается по уровням косвенного обращения от "char *[30]"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(268,20): warning C4024: insert_word_tree: различные типы для формального и фактического параметров 1
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(289,14): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "char *[30]"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(289,10): warning C4024: strcpy: различные типы для формального и фактического параметров 1
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(290,20): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char *[30]"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(290,16): warning C4024: strlen: различные типы для формального и фактического параметров 1
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(290,22): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(291,21): warning C4047: ==: "char *" отличается по уровням косвенного обращения от "int"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(292,24): warning C4047: функция: "unsigned char *" отличается по уровням косвенного обращения от "char *[30]"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(292,20): warning C4024: insert_word_tree: различные типы для формального и фактического параметров 1
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(312,8): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(325,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(335,32): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(371,14): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(373,35): warning C4047: =: "unsigned char *" отличается по уровням косвенного обращения от "unsigned char"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(431,35): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(565,51): warning C4047: =: "unsigned char" отличается по уровням косвенного обращения от "unsigned char *"
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(597,8): warning C4101: file: неиспользованная локальная переменная
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(661,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(799,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1532,18): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1204,9): warning C4101: j: неиспользованная локальная переменная
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1204,6): warning C4101: i: неиспользованная локальная переменная
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1715,28): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1766,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(2074,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(2204,29): warning C4267: функция: преобразование из "size_t" в "short"; возможна потеря данных
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(188): warning C4715: find_node: значение возвращается не при всех путях выполнения
+C:\Users\puuni\source\repos\balda_3_sem_orig\balda_3_sem\main.c(1201): warning C4715: check_end_game: значение возвращается не при всех путях выполнения
   balda_3_sem.vcxproj -> C:\Users\puuni\source\repos\balda_3_sem_orig\x64\Debug\balda_3_sem.exe
