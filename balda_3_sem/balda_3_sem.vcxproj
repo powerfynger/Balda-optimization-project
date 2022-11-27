@@ -107,6 +107,8 @@
       <Optimization>MaxSpeed</Optimization>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <AdditionalOptions>
+      </AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,16 +133,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+    <ClCompile Include="sqlite3.c" />
     <ClCompile Include="wincon.c" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="dict.txt" />
-    <Text Include="inv.txt" />
-    <Text Include="save.txt" />
-    <Text Include="start_words.txt" />
+    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="wincon.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="wincon.h" />
+    <None Include="data_ansi.db" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
